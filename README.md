@@ -7,9 +7,9 @@ This project implements an end-to-end Deep Learning solution for detecting Melan
 | Name                | Role                   | Responsibilities                                                         |
 | :------------------ | :--------------------- | :----------------------------------------------------------------------- |
 | **Yasmin Ehab**     | Team Leader & Frontend | **UI/UX Refactoring**, CSS styling, Final UI Polish, Project Management. |
-| **Mariam Sameh**    | AI Engineer            | Data Collection, Model Training pipeline.                                |
+| **Mariam Sameh**    | AI Engineer            | Data Collection, Data Cleaning, Analysis, and visualization.                                |
 | **Yousef Atef**     | AI Engineer            | Model Architecture Design, Transfer Learning implementation.             |
-| **Ali Mohammed**    | Data Scientist         | Data Cleaning, Analysis, and visualization.                              |
+| **Ali Mohammed**    | Data Scientist         | Model Training pipeline.                              |
 | **Youssef Haitham** | Frontend Developer     | **Initial Web Layout**, HTML Structure Prototyping.                      |
 | **Osama Ghonim**    | Backend Developer      | API development (FastAPI), Model integration, Server logic.              |
 
@@ -126,3 +126,4 @@ Here is a glimpse of our application in action:
 ### 4. Team Page
 
 ![Our Team](images/team_page.png)
+
