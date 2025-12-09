@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skin Cancer DETECTION - Detection</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css?v=5" />
+  </head>
+  <body>
+    <div class="nav-bar">
+      <div class="nav-logo">
+        <h2>Skin Cancer<span> DETECTION</span></h2>
+      </div>
+      <div class="nav-items">
+        <ul>
+          <li><a href="Home Page.html">Home</a></li>
+          <li><a href="model.html" class="active">Detection</a></li>
+          <li><a href="About.html">Model Info</a></li>
+          <li><a href="Team.html">Our Team</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="upload-section">
+      <h2>Upload Skin Image</h2>
+      <p>Supported formats: JPG, PNG, JPEG</p>
+
+      <div class="upload-box">
+        <div style="margin-bottom: 20px; color: #10b981; font-size: 50px">
+          <i class="fa-solid fa-cloud-arrow-up"></i>
+        </div>
+
+        <input
+          type="file"
+          id="imageInput"
+          accept="image/*"
+          onchange="previewImage()"
+        />
+        <br />
+        <img id="preview-image" src="" alt="Image Preview" />
+      </div>
+
+      <button class="btn-primary" onclick="analyzeImage()">
+        ANALYZE RESULT
+      </button>
+
+      <div
+        id="result-display"
+        style="
+          margin-top: 25px;
+          font-weight: 700;
+          font-size: 22px;
+          color: #023e8a;
+          min-height: 30px;
+        "
+      ></div>
+    </div>
+
+    <script>
+      function previewImage() {
+        var file = document.getElementById("imageInput").files[0];
+        document.getElementById("result-display").innerText = "";
+
+        if (file) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            var img = document.getElementById("preview-image");
+            img.src = e.target.result;
+            img.style.display = "block";
+          };
+          reader.readAsDataURL(file);
+        }
+      }
+
+      async function analyzeImage() {
+        const fileInput = document.getElementById("imageInput");
+        const resultDisplay = document.getElementById("result-display");
+
+        if (fileInput.files.length === 0) {
+          alert("Please select an image first!");
+          return;
+        }
+
+        const formData = new FormData();
+        formData.append("file", fileInput.files[0]);
+
+        resultDisplay.innerText = "Analyzing... Please wait";
+        resultDisplay.style.color = "#555";
+
+        try {
+          const response = await fetch("http://127.0.0.1:8000/predict", {
+            method: "POST",
+            body: formData,
+          });
+
+          if (!response.ok) {
+            throw new Error("Server Error");
+          }
+
+          const data = await response.json();
+
+          const confidencePercent = (data.confidence * 100).toFixed(2);
+          resultDisplay.innerText = `Diagnosis: ${data.prediction} (${confidencePercent}%)`;
+
+          if (data.prediction === "Malignant") {
+            resultDisplay.style.color = "#dc2626";
+          } else {
+            resultDisplay.style.color = "#10b981";
+          }
+        } catch (error) {
+          console.error("Error:", error);
+          resultDisplay.innerText =
+            "Error: Could not connect to the server. Make sure Backend.py is running.";
+          resultDisplay.style.color = "red";
+        }
+      }
+    </script>
+  </body>
+</html>

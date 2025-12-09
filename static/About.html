@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skin Cancer DETECTION - About Model</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css?v=4" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-matrix@1.1.1/dist/chartjs-chart-matrix.min.js"></script>
+  </head>
+  <body>
+    <div class="nav-bar">
+      <div class="nav-logo">
+        <h2>Skin Cancer<span> DETECTION</span></h2>
+      </div>
+      <div class="nav-items">
+        <ul>
+          <li><a href="Home Page.html">Home</a></li>
+          <li><a href="model.html">Detection</a></li>
+          <li><a href="About.html" class="active">Model Info</a></li>
+          <li><a href="Team.html">Our Team</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="about-section">
+      <div class="about-header">
+        <h2>Model Performance & Insights</h2>
+        <p>
+          A deep dive into the technology, architecture, and training metrics
+          behind our skin cancer detection system.
+        </p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <i class="fa-solid fa-bullseye"></i>
+          <h3>96.40%</h3>
+          <p>Test Accuracy</p>
+        </div>
+        <div class="stat-card">
+          <i class="fa-solid fa-layer-group"></i>
+          <h3>EfficientNet</h3>
+          <p>B0 Architecture</p>
+        </div>
+        <div class="stat-card">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+          <h3>15</h3>
+          <p>Training Epochs</p>
+        </div>
+        <div class="stat-card">
+          <i class="fa-solid fa-database"></i>
+          <h3>11,879</h3>
+          <p>Training Samples</p>
+        </div>
+      </div>
+
+      <div class="tech-stack">
+        <h3>Technologies Used</h3>
+        <div class="tech-grid">
+          <div class="tech-item">
+            <i class="fa-brands fa-python"></i> Python
+          </div>
+          <div class="tech-item"><i class="fa-solid fa-fire"></i> PyTorch</div>
+          <div class="tech-item">
+            <i class="fa-solid fa-server"></i> FastAPI
+          </div>
+          <div class="tech-item">
+            <i class="fa-brands fa-html5"></i> HTML5 & CSS3
+          </div>
+          <div class="tech-item">
+            <i class="fa-solid fa-brain"></i> Transfer Learning
+          </div>
+        </div>
+      </div>
+
+      <div
+        style="
+          max-width: 900px;
+          margin: 0 auto;
+          text-align: center;
+          margin-bottom: 40px;
+          color: #555;
+          line-height: 1.8;
+        "
+      >
+        <p>
+          We utilized <strong>EfficientNet-B0</strong>, a state-of-the-art
+          convolutional neural network, leveraging
+          <strong>Transfer Learning</strong>. The final classifier head was
+          modified to include Dropout layers and Batch Normalization to prevent
+          overfitting and ensure robust performance on skin lesion images. Data
+          augmentation techniques like random rotation, flipping, and color
+          jitter were applied to enhance generalization.
+        </p>
+      </div>
+
+      <div
+        class="charts-container"
+        style="
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+          gap: 40px;
+          margin-top: 40px;
+        "
+      >
+        <div class="chart-box">
+          <h4>Training vs Validation Accuracy</h4>
+          <canvas id="accuracyChart"></canvas>
+        </div>
+        <div class="chart-box">
+          <h4>Training vs Validation Loss</h4>
+          <canvas id="lossChart"></canvas>
+        </div>
+
+        <div
+          class="chart-box"
+          style="grid-column: span 2; max-width: 800px; margin: 0 auto"
+        >
+          <h4>Confusion Matrix (Test Set)</h4>
+          <p
+            style="
+              font-size: 13px;
+              color: #666;
+              text-align: center;
+              margin-bottom: 15px;
+            "
+          >
+            Showing True Labels vs Predicted Labels based on test data
+            evaluation.
+          </p>
+          <div style="height: 400px; width: 100%">
+            <canvas id="confusionMatrix"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const accCtx = document.getElementById("accuracyChart").getContext("2d");
+      new Chart(accCtx, {
+        type: "line",
+        data: {
+          labels: [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+          ],
+          datasets: [
+            {
+              label: "Train Accuracy",
+              data: [
+                0.78, 0.88, 0.9, 0.92, 0.93, 0.94, 0.95, 0.96, 0.97, 0.977,
+                0.98, 0.985, 0.99, 0.99, 0.99,
+              ],
+              borderColor: "#10b981",
+              tension: 0.4,
+            },
+            {
+              label: "Validation Accuracy",
+              data: [
+                0.917, 0.929, 0.933, 0.925, 0.948, 0.943, 0.951, 0.955, 0.954,
+                0.961, 0.961, 0.963, 0.964, 0.961, 0.956,
+              ],
+              borderColor: "#023e8a",
+              tension: 0.4,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { position: "bottom" },
+          },
+        },
+      });
+
+      const lossCtx = document.getElementById("lossChart").getContext("2d");
+      new Chart(lossCtx, {
+        type: "line",
+        data: {
+          labels: [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+          ],
+          datasets: [
+            {
+              label: "Train Loss",
+              data: [
+                0.55, 0.4, 0.35, 0.3, 0.25, 0.22, 0.18, 0.15, 0.12, 0.1, 0.08,
+                0.07, 0.05, 0.04, 0.03,
+              ],
+              borderColor: "#dc2626",
+              backgroundColor: "rgba(220, 38, 38, 0.1)",
+              fill: true,
+              tension: 0.4,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { position: "bottom" },
+          },
+        },
+      });
+
+      const matrixData = [
+        { x: "Benign", y: "Benign", v: 975 }, // True Negative (High)
+        { x: "Benign", y: "Malignant", v: 25 }, // False Positive (Low)
+        { x: "Malignant", y: "Benign", v: 47 }, // False Negative (Low)
+        { x: "Malignant", y: "Malignant", v: 953 }, // True Positive (High)
+      ];
+
+      const matrixCtx = document
+        .getElementById("confusionMatrix")
+        .getContext("2d");
+      new Chart(matrixCtx, {
+        type: "matrix",
+        data: {
+          datasets: [
+            {
+              label: "Confusion Matrix",
+              data: matrixData,
+              backgroundColor(context) {
+                const value = context.dataset.data[context.dataIndex].v;
+                const alpha = (value - 25) / (975 - 25);
+                return `rgba(16, 185, 129, ${alpha + 0.2})`;
+              },
+              borderColor: "#fff",
+              borderWidth: 1,
+              width: ({ chart }) => (chart.chartArea || {}).width / 2 - 1,
+              height: ({ chart }) => (chart.chartArea || {}).height / 2 - 1,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                title() {
+                  return "";
+                },
+                label(context) {
+                  const v = context.dataset.data[context.dataIndex];
+                  return [
+                    `Actual: ${v.y}`,
+                    `Predicted: ${v.x}`,
+                    `Count: ${v.v}`,
+                  ];
+                },
+              },
+            },
+            datalabels: {
+              display: true,
+              color: "black",
+            },
+          },
+          scales: {
+            x: {
+              type: "category",
+              labels: ["Benign", "Malignant"],
+              title: {
+                display: true,
+                text: "Predicted Label",
+                font: { weight: "bold" },
+              },
+            },
+            y: {
+              type: "category",
+              labels: ["Benign", "Malignant"],
+              offset: true,
+              title: {
+                display: true,
+                text: "Actual Label",
+                font: { weight: "bold" },
+              },
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
