@@ -17,20 +17,6 @@ This project implements an end-to-end Deep Learning solution for detecting Melan
 
 ---
 
-## 📋 Project Phases & Task Distribution
-
-| # | Phase Name | Responsible Members | Collaborative Tasks |
-| :--- | :--- | :--- | :--- |
-| **1** | **Problem Definition & Data** | **All Team Members** | **Yasmin & Mariam** led the scope definition. All members gathered data to ensure diversity. |
-| **2** | **Data Cleaning & Analysis** | **Ali, Yasmin, Yousef H.** | **Ali** analyzed data. **Yasmin & Yousef H.** checked images for visual quality suitable for UI display. |
-| **3** | **Feature Engineering** | **Mariam, Ali, Osama** | **Mariam & Ali** applied augmentations. **Osama** ensured preprocessing matches API input requirements. |
-| **4** | **Model Design** | **Yousef A., Yasmin** | **Yousef A.** selected the architecture. **Yasmin** defined the input/output format for the UI integration. |
-| **5** | **Model Training** | **Mariam, Yousef A., Ali** | **Mariam & Yousef A.** managed training loops. **Ali** monitored accuracy metrics and overfitting. |
-| **6** | **Testing & Inference** | **All Team Members** | **Yousef A.** tested accuracy. **Osama** tested API response time. **Yasmin** tested user experience flow. |
-| **7** | **GUI & Application** | **Yasmin, Youssef H., Osama** | **Yasmin** finalized UI/UX. **Youssef H.** built structure. **Osama** connected Backend. |
-
----
-
 ## 🚀 Project Pipeline Details
 
 ### 1. Problem Definition and Data Collection
@@ -131,4 +117,5 @@ Here is a glimpse of our application in action:
 
 ### 4. Team Page
 ![Our Team](images/team_page.png)
+
 
