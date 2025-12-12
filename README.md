@@ -1,6 +1,6 @@
-# Skin Cancer Detection System (Melanoma vs. Benign) 🎗️
+# Skin Cancer Detection System (Malignant vs. Benign) 🎗️
 
-This project implements an end-to-end Deep Learning solution for detecting Melanoma skin cancer. It utilizes **EfficientNet-B0** for high-accuracy image classification and provides a user-friendly Web Interface powered by **FastAPI** (Backend) and **HTML/CSS** (Frontend).
+This project implements an end-to-end Deep Learning solution for detecting skin cancer. It utilizes **EfficientNet-B0** for high-accuracy image classification and provides a user-friendly Web Interface powered by **FastAPI** (Backend) and **HTML/CSS** (Frontend).
 
 ---
 
@@ -20,7 +20,7 @@ This project implements an end-to-end Deep Learning solution for detecting Melan
 ## 🚀 Project Pipeline Details
 
 ### 1. Problem Definition and Data Collection
-* **Objective:** To build a binary classification model capable of distinguishing between **Benign** skin lesions and **Malignant (Melanoma)** skin cancer.
+* **Objective:** To build a binary classification model capable of distinguishing between **Benign** skin lesions and **Malignant** skin cancer.
 * **Dataset:** The entire team collaborated to gather a diverse labeled dataset of skin lesion images, ensuring both high quality for training and visual clarity for the user interface display.
 
 ### 2. Data Cleaning and Analysis
@@ -117,6 +117,7 @@ Here is a glimpse of our application in action:
 
 ### 4. Team Page
 ![Our Team](images/team_page.png)
+
 
 
 
